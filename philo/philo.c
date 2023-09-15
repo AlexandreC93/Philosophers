@@ -1,12 +1,6 @@
 #include "global.h"
 #include "functions.h"
 
-/*
-args: Structure with the data of the philosopher
-Return none.
-Main function of the thread philosopher that starts
-the routine.
-*/
 void	*philo_life(void *args)
 {
 	t_philo_memo	*memo;
@@ -14,7 +8,7 @@ void	*philo_life(void *args)
 	memo = (t_philo_memo *)args;
 	pthread_mutex_lock(memo->start_flag);
 	pthread_mutex_unlock(memo->start_flag);
-	gettimeofday(&memo->last_eat, NULL);										//Set the start time
+	gettimeofday(&memo->last_eat, NULL);
 	usleep(1000);
 	if (memo->philo_seat % 2 == 0)
 		usleep(5000);															//So everyone doesn't take the left at the beginning
@@ -41,7 +35,7 @@ void	*philo_life(void *args)
 			pthread_mutex_lock(memo->print_prio);
 			if (*memo->semaph_end != 1)
 				printf("| %-14ld| %10d| %-24s|\n", get_timestamp(memo->time_start), memo->philo_seat, "has taken the right fork");
-			gettimeofday(&memo->last_eat, NULL);								//Save eat time just before starting
+			gettimeofday(&memo->last_eat, NULL);
 			if (*memo->semaph_end != 1)
 				printf("| %-14ld| %10d| %-24s|%d/%d\n", get_timestamp(memo->time_start), memo->philo_seat, "is now eating", memo->meals + 1, memo->philo_hungry);
 			pthread_mutex_unlock(memo->print_prio);

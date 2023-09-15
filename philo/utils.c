@@ -1,12 +1,6 @@
 #include "global.h"
 #include "functions.h"
 
-/*
-start: Start time
-Return the time since the start in milliseconds.
-Calculates the difference in milliseconds from
-the starting time with the current time.
-*/
 long int	get_timestamp(struct timeval start)
 {
 	struct timeval	end;
@@ -29,12 +23,6 @@ long int	get_timestamp(struct timeval start)
 		return (-1);
 }
 
-/*
-str: string
-Return the integer.
-Calculate the integer it refers
-to from the source string.
-*/
 int	adhoc_atoi(const char *str)
 {
 	int					i;
@@ -49,25 +37,16 @@ int	adhoc_atoi(const char *str)
 		ret = ret * 10 + (str[i] - 48);		//Subtracting the offset of 0, according to the asci table, we get the char as a number
 		i++;
 	}
+	if (ret > 2147483647)
+		return (0);
 	return (ret);
 }
 
-/*
-My own function implementing the original one.
-For more use "man isdigit"
-*/
 int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-/*
-s: The string to output.
-fd: The file descriptor on which to write.
-Return none.
-Outputs the string ’s’ to the given file
-descriptor.
-*/
 void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	i;
@@ -83,13 +62,6 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-/*
-c: The character to output.
-fd: The file descriptor on which to write.
-Return none.
-Outputs the character ’c’ to the given file
-descriptor.
-*/
 void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);

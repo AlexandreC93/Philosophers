@@ -1,6 +1,7 @@
 CC	= gcc -g
 LIBC	= ar -rcs
 CFLAGS	+= -pthread -Wall -Werror -Wextra
+# -g fsanitize=thread
 OPTFLAGS= -O3
 SRC = .
 INCLUDES= -I $(SRC)

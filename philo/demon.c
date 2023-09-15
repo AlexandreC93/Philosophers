@@ -3,12 +3,6 @@
 
 static int	check_end(t_philo_memo philo, int *flag);
 
-/*
-set: Structure with all the data
-Return none.
-Main function of the thread daemon that checks
-when philosophers are starved or have completed their meals.
-*/
 void	*demon_life(void *set)
 {
 	t_init	*table;
@@ -20,7 +14,7 @@ void	*demon_life(void *set)
 	table = (t_init *)set;
 	while (true)
 	{
-		usleep(3000);															//Delay before next check
+		usleep(3000);
 		more_meals = 0;
 		i = -1;
 		while (++i < table->num_philo)
@@ -50,12 +44,6 @@ void	*demon_life(void *set)
 	return (0);
 }
 
-/*
-philo: Structure with all the data about the philosopher
-flag: Reference to die flag variable
-Return the state 1 if the philosopher ate all meals, 0 if not.
-Check if all philosophers have eaten, and set the flag if someone died.
-*/
 static int	check_end(t_philo_memo philo, int *flag)
 {
 	if (get_timestamp(philo.last_eat) > philo.time_to_die)

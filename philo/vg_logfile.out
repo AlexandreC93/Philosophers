@@ -1,15 +1,37 @@
-==28074== Memcheck, a memory error detector
-==28074== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==28074== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
-==28074== Command: ./philo 4 300 200 100
-==28074== Parent PID: 14639
-==28074== 
-==28074== 
-==28074== HEAP SUMMARY:
-==28074==     in use at exit: 0 bytes in 0 blocks
-==28074==   total heap usage: 8 allocs, 8 frees, 3,000 bytes allocated
-==28074== 
-==28074== All heap blocks were freed -- no leaks are possible
-==28074== 
-==28074== For lists of detected and suppressed errors, rerun with: -s
-==28074== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==14985== Memcheck, a memory error detector
+==14985== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==14985== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==14985== Command: ./philo 200 200 300 400
+==14985== Parent PID: 8287
+==14985== 
+==14985== Thread 2:
+==14985== Conditional jump or move depends on uninitialised value(s)
+==14985==    at 0x10A51C: get_timestamp (utils.c:26)
+==14985==    by 0x10A410: check_end (demon.c:61)
+==14985==    by 0x10A2A9: demon_life (demon.c:27)
+==14985==    by 0x4863608: start_thread (pthread_create.c:477)
+==14985==    by 0x499D132: clone (clone.S:95)
+==14985==  Uninitialised value was created by a heap allocation
+==14985==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14985==    by 0x109649: start_philos (main.c:54)
+==14985==    by 0x1093F7: main (main.c:31)
+==14985== 
+==14985== Conditional jump or move depends on uninitialised value(s)
+==14985==    at 0x10A41A: check_end (demon.c:61)
+==14985==    by 0x10A2A9: demon_life (demon.c:27)
+==14985==    by 0x4863608: start_thread (pthread_create.c:477)
+==14985==    by 0x499D132: clone (clone.S:95)
+==14985==  Uninitialised value was created by a heap allocation
+==14985==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14985==    by 0x109649: start_philos (main.c:54)
+==14985==    by 0x1093F7: main (main.c:31)
+==14985== 
+==14985== 
+==14985== HEAP SUMMARY:
+==14985==     in use at exit: 0 bytes in 0 blocks
+==14985==   total heap usage: 204 allocs, 204 frees, 78,264 bytes allocated
+==14985== 
+==14985== All heap blocks were freed -- no leaks are possible
+==14985== 
+==14985== For lists of detected and suppressed errors, rerun with: -s
+==14985== ERROR SUMMARY: 114 errors from 2 contexts (suppressed: 0 from 0)
